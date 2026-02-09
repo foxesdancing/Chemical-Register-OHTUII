@@ -1,0 +1,69 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.7">
+  <diagram name="Sivu-1" id="0MC3fpvYLoJCwnlv-JPS">
+    <mxGraphModel dx="983" dy="512" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="HkpnrtSdyhkQ7h81JsOG-8" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="150" as="sourcePoint" />
+            <mxPoint x="391.99999999999636" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uiupg8LxzHz5iYPYIJkT-5" connectable="0" parent="HkpnrtSdyhkQ7h81JsOG-8" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Response" vertex="1">
+          <mxGeometry relative="1" x="-0.0914" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HkpnrtSdyhkQ7h81JsOG-3" parent="1" style="image;html=1;image=img/lib/clip_art/computers/Database_128x128.png" value="" vertex="1">
+          <mxGeometry height="80" width="80" x="100" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="HkpnrtSdyhkQ7h81JsOG-9" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.2;entryY=0.286;entryDx=0;entryDy=0;entryPerimeter=0;" target="HkpnrtSdyhkQ7h81JsOG-10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+            <mxPoint x="435.3999941013815" y="150.02857142857135" as="sourcePoint" />
+            <mxPoint x="640" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uiupg8LxzHz5iYPYIJkT-6" connectable="0" parent="HkpnrtSdyhkQ7h81JsOG-9" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="HTML-main page" vertex="1">
+          <mxGeometry relative="1" x="-0.0338" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HkpnrtSdyhkQ7h81JsOG-14" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="392.0000058986184" y="164.71857142857135" as="sourcePoint" />
+            <mxPoint x="180" y="164.71857142857135" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uiupg8LxzHz5iYPYIJkT-4" connectable="0" parent="HkpnrtSdyhkQ7h81JsOG-14" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Database query" vertex="1">
+          <mxGeometry relative="1" x="0.1955" y="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HkpnrtSdyhkQ7h81JsOG-4" parent="1" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/generic_server.svg;" value="" vertex="1">
+          <mxGeometry height="77.5" width="43.4" x="392" y="121.25" as="geometry" />
+        </mxCell>
+        <mxCell id="HkpnrtSdyhkQ7h81JsOG-13" edge="1" parent="1" source="HkpnrtSdyhkQ7h81JsOG-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="440" y="165" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HkpnrtSdyhkQ7h81JsOG-15" connectable="0" parent="HkpnrtSdyhkQ7h81JsOG-13" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="chemical-register.com" vertex="1">
+          <mxGeometry relative="1" x="0.0586" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HkpnrtSdyhkQ7h81JsOG-10" parent="1" style="shape=actor;whiteSpace=wrap;html=1;" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;User" vertex="1">
+          <mxGeometry height="70" width="50" x="640" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="uiupg8LxzHz5iYPYIJkT-1" parent="1" style="whiteSpace=wrap;html=1;" value="Backend" vertex="1">
+          <mxGeometry height="30" width="66.3" x="380" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="uiupg8LxzHz5iYPYIJkT-3" parent="1" style="whiteSpace=wrap;html=1;" value="Database" vertex="1">
+          <mxGeometry height="30" width="66.3" x="106.85" y="200" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
