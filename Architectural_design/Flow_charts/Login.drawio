@@ -1,0 +1,93 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36" version="29.3.8">
+  <diagram name="Sivu-1" id="ecMBrtT_HlyrOgbFRCiy">
+    <mxGraphModel dx="1188" dy="619" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-14" edge="1" parent="1" source="GYE-rs_rF_pPRP-3XjvL-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="GYE-rs_rF_pPRP-3XjvL-13" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="User opens site" vertex="1">
+          <mxGeometry height="60" width="120" x="135" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-16" edge="1" parent="1" source="GYE-rs_rF_pPRP-3XjvL-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="GYE-rs_rF_pPRP-3XjvL-15" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-17" connectable="0" parent="GYE-rs_rF_pPRP-3XjvL-16" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="No" vertex="1">
+          <mxGeometry relative="1" x="-0.2897" y="-3" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-19" edge="1" parent="1" source="GYE-rs_rF_pPRP-3XjvL-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="GYE-rs_rF_pPRP-3XjvL-18" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-20" connectable="0" parent="GYE-rs_rF_pPRP-3XjvL-19" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Yes" vertex="1">
+          <mxGeometry relative="1" x="-0.2224" y="3" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-13" parent="1" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" value="Does user have an account?" vertex="1">
+          <mxGeometry height="80" width="80" x="155" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-28" edge="1" parent="1" source="GYE-rs_rF_pPRP-3XjvL-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="GYE-rs_rF_pPRP-3XjvL-27" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-15" parent="1" style="whiteSpace=wrap;html=1;rounded=0;" value="Create an&lt;div&gt;account&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="295" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-22" edge="1" parent="1" source="GYE-rs_rF_pPRP-3XjvL-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="GYE-rs_rF_pPRP-3XjvL-21" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-23" connectable="0" parent="GYE-rs_rF_pPRP-3XjvL-22" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="No" vertex="1">
+          <mxGeometry relative="1" x="0.0782" y="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-25" edge="1" parent="1" source="GYE-rs_rF_pPRP-3XjvL-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="GYE-rs_rF_pPRP-3XjvL-24" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-26" connectable="0" parent="GYE-rs_rF_pPRP-3XjvL-25" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Yes" vertex="1">
+          <mxGeometry relative="1" x="-0.0483" y="-3" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-18" parent="1" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" value="Remember username/password?" vertex="1">
+          <mxGeometry height="80" width="80" x="155" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-31" edge="1" parent="1" source="GYE-rs_rF_pPRP-3XjvL-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="GYE-rs_rF_pPRP-3XjvL-30" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-21" parent="1" style="whiteSpace=wrap;html=1;rounded=0;" value="Field to put email&lt;div&gt;for changing password&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="295" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-24" parent="1" style="whiteSpace=wrap;html=1;rounded=0;" value="Login succesful" vertex="1">
+          <mxGeometry height="60" width="120" x="135" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-33" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="635" y="570" />
+            </Array>
+            <mxPoint x="635" y="280.00000000000006" as="sourcePoint" />
+            <mxPoint x="255" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-27" parent="1" style="whiteSpace=wrap;html=1;rounded=0;" value="Page to create&lt;div&gt;an account&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="580" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-32" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.574;exitY=1.018;exitDx=0;exitDy=0;exitPerimeter=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="564" y="568.92" />
+            </Array>
+            <mxPoint x="563.8800000000001" y="439.99999999999994" as="sourcePoint" />
+            <mxPoint x="255" y="568.92" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GYE-rs_rF_pPRP-3XjvL-30" parent="1" style="whiteSpace=wrap;html=1;rounded=0;" value="Link sent to email, where user can change password." vertex="1">
+          <mxGeometry height="60" width="120" x="495" y="380" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
