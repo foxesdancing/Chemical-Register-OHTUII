@@ -1,0 +1,155 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Body (Background) */
+body {
+    background-color: #2BB6C0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main container */
+.container {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Signup card */
+.signup-card {
+    background-color: #FFFFFF;
+    width: 100%;
+    max-width: 400px;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+/* Headings */
+.signup-card h1 {
+    color: #2BB6C0;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.subtitle {
+    color: #666666;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+/* Input Fields */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #D0D0D0;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 0 1px #E5E5E5;
+    font-size: 14px;
+    color: #999999;
+    outline: none;
+    transition: 0.3s;
+    text-align: center;
+}
+
+/* Focus Effect */
+.input-group input:focus {
+    border-color: #2BB6C0;
+    background-color: #ffffff;
+}
+
+/* Button */
+.btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: #2BB6C0;
+    border: none;
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* Login text */
+.login-text {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #666666;
+}
+
+.login-text a {
+    color: #2BB6C0;
+    text-decoration: none;
+}
+
+.login-text a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+
+/* Tablet View */
+@media (max-width: 768px) {
+    .signup-card {
+        padding: 35px 25px;
+        max-width: 350px;
+    }
+
+    .signup-card h1 {
+        font-size: 22px;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 480px) {
+    body {
+        align-items: flex-start;
+        padding-top: 40px;
+    }
+
+    .signup-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 30px 20px;
+        border-radius: 10px;
+    }
+
+    .signup-card h1 {
+        font-size: 20px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .input-group input {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
