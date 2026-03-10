@@ -8,7 +8,7 @@ const loginBtn = document.querySelector('.login-btn');
 
 // Helping function: email validation
 function isValidEmail(email) {
-    return /^\S+@\S+\.\S+$/.test(email);
+    return /^\S+@\S+\.\S+$/.test(email); // Should we fix this for accepting only uef students?
 }
 
 // Handling the Login (changed click with submit, so pressing enter works too)
