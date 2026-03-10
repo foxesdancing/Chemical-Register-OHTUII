@@ -1,5 +1,7 @@
+console.log("loginpagescript.js is triggered");
+
 // Select the elements
-const loginForm = document.querySelector('.login-card'); 
+const loginForm = document.querySelector('.login-form'); 
 const emailInput = document.querySelector('input[type="email"]');
 const passwordInput = document.querySelector('input[type="password"]');
 const loginBtn = document.querySelector('.login-btn');
@@ -9,8 +11,8 @@ function isValidEmail(email) {
     return /^\S+@\S+\.\S+$/.test(email);
 }
 
-// Handling the Login Click
-loginBtn.addEventListener('click', function(e) {
+// Handling the Login (changed click with submit, so pressing enter works too)
+loginForm.addEventListener('submit', async function(e) {
     e.preventDefault(); 
 
     const email = emailInput.value.trim();
@@ -35,8 +37,20 @@ loginBtn.addEventListener('click', function(e) {
         return;
     }
 
-    // Success Simulation
-    alert('Login successful! (This is just front-end simulation.)');
+    console.log("Attempting logging in");
+    // Supabase function for loggin the user in
+    const { data, error } = await supabase.auth.signInWithPassword({
+            email,
+            password
+        });
+
+        if (error) {
+            console.error(error);
+            alert("Login failed: " + error.message);
+            return;
+        }
+
+        window.location = "mainPage.html";
 
     // Optional: clear inputs
     emailInput.value = '';

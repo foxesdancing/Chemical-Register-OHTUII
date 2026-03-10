@@ -1,4 +1,5 @@
 // Wait until DOM loads
+console.log("Signup.js is triggered");
 document.addEventListener("DOMContentLoaded", function () {
 
     const form = document.querySelector("form");
@@ -7,9 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const passwordInput = document.querySelector('input[name="password"]');
     const confirmPasswordInput = document.querySelector('input[name="confirm-password"]');
 
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("submit", async function (event) {
         event.preventDefault(); // Stop form submission
 
+        
+        
         // Clear previous errors
         clearErrors();
 
@@ -41,8 +44,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // If all valid
         if (isValid) {
-            alert("Account created successfully!");
+            console.log("Validation passed, attempting Supabase signup…");
+
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+
+            const { data, error } = await supabase.auth.signUp({
+                email,
+                password
+            });
+
+            if (error) {
+                console.error(error);
+                showError(emailInput, error.message);
+                return;
+            }
+
+            alert("Signup successful! Check your email for verification.");
             form.reset();
+
         }
     });
 
