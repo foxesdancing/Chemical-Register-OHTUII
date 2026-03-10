@@ -101,6 +101,12 @@ body {
     font-size: 14px;
 }
 
+.sign-up a {
+    text-decoration: none;
+    color: #2BB6C0;                 
+    font-size: 14px;
+}
+
 /* Responsive Design */
 
 /* Tablet View */
