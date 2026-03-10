@@ -11,7 +11,7 @@
     <title>Create Account</title>
     
     <!-- Link CSS file -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/Signup.css">
 </head>
 
 <body>
@@ -26,7 +26,7 @@
             <p class="subtitle">Register to access the chemical system</p>
 
             <!-- Form -->
-            <form action="#" method="POST">
+            <form>
 
                 <!-- Name -->
                 <div class="input-group">
@@ -35,12 +35,12 @@
 
                 <!-- Email -->
                 <div class="input-group">
-                    <input type="email" name="email" placeholder="Email Address" required>
+                    <input type="email" name="email" id="email" placeholder="Email Address" required>
                 </div>
 
                 <!-- Password -->
                 <div class="input-group">
-                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
                 </div>
 
                 <!-- Confirm Password -->
@@ -56,7 +56,7 @@
                 <!-- Login Link -->
                 <p class="login-text">
                     Already have an account?
-                    <a href="#">Login</a>
+                    <a href="../html/login.html">Login</a>
                 </p>
 
             </form>
@@ -64,6 +64,8 @@
         </div>
 
     </div>
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="../Js/supabaseClient.js"></script>
+    <script src="../Js/Signup.js"></script>
 </body>
 </html>
