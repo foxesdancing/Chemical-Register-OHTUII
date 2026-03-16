@@ -1,45 +1,44 @@
 console.log("loginpagescript.js is triggered");
 
-// Select the elements
-const loginForm = document.querySelector('.login-form'); 
-const emailInput = document.querySelector('input[type="email"]');
-const passwordInput = document.querySelector('input[type="password"]');
-const loginBtn = document.querySelector('.login-btn');
+document.addEventListener("DOMContentLoaded", async function () {
+    // If already logged in, skip login page
+    await window.redirectIfLoggedIn();
 
-// Helping function: email validation
-function isValidEmail(email) {
-    return /^\S+@\S+\.\S+$/.test(email); // Should we fix this for accepting only uef students?
-}
+    const loginForm = document.querySelector('.login-form'); 
+    const emailInput = document.querySelector('input[type="email"]');
+    const passwordInput = document.querySelector('input[type="password"]');
 
-// Handling the Login (changed click with submit, so pressing enter works too)
-loginForm.addEventListener('submit', async function(e) {
-    e.preventDefault(); 
-
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
-
-    // Validation
-    if (email === '') {
-        alert('Please enter your email address.');
-        emailInput.focus();
-        return;
+    function isValidEmail(email) {
+        return /^\S+@\S+\.\S+$/.test(email);
     }
 
-    if (!isValidEmail(email)) {
-        alert('Please enter a valid email address.');
-        emailInput.focus();
-        return;
-    }
+    loginForm.addEventListener('submit', async function(e) {
+        e.preventDefault(); 
 
-    if (password === '') {
-        alert('Please enter your password.');
-        passwordInput.focus();
-        return;
-    }
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
 
-    console.log("Attempting logging in");
-    // Supabase function for loggin the user in
-    const { data, error } = await supabase.auth.signInWithPassword({
+        if (email === '') {
+            alert('Please enter your email address.');
+            emailInput.focus();
+            return;
+        }
+
+        if (!isValidEmail(email)) {
+            alert('Please enter a valid email address.');
+            emailInput.focus();
+            return;
+        }
+
+        if (password === '') {
+            alert('Please enter your password.');
+            passwordInput.focus();
+            return;
+        }
+
+        console.log("Attempting logging in");
+
+        const { data, error } = await window.supabase.auth.signInWithPassword({
             email,
             password
         });
@@ -50,9 +49,11 @@ loginForm.addEventListener('submit', async function(e) {
             return;
         }
 
-        window.location = "mainPage.html";
+        if (!data.session) {
+            alert("Login succeeded, but no session was returned.");
+            return;
+        }
 
-    // Optional: clear inputs
-    emailInput.value = '';
-    passwordInput.value = '';
+        window.location.href = "mainPage.html";
+    });
 });

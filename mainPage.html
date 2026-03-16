@@ -7,6 +7,27 @@
 </head>
 <body>
     <h1>Chem-reg</h1>
-    <button>Log out</button>
+    <p id="welcomeText">Loading session...</p>
+    <button id="logoutBtn">Log out</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="../Js/supabaseClient.js"></script>
+    <script src="../Js/session.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            const session = await window.requireSession();
+
+            if (!session) return;
+
+            const user = session.user;
+            document.getElementById("welcomeText").textContent =
+                "Logged in as: " + user.email;
+
+            document.getElementById("logoutBtn").addEventListener("click", async function () {
+                await window.logoutUser();
+            });
+        });
+    </script>
 </body>
 </html>
