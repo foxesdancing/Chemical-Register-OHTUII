@@ -2,27 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
-    <!-- it makes website responsive on the mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Chemical Register - Login</title>
-    
-    <!-- the link of CSS file -->
     <link rel="stylesheet" href="../css/loginpagestyle.css">
 </head>
 
 <body>
-
     <div class="container">
-
         <div class="login-card">
-
             <h1 class="title">Chemical Register</h1>
             <p class="subtitle">Secure Access Portal</p>
 
             <form class="login-form">
-
                 <div class="input-group">
                     <input 
                         type="email" 
@@ -47,13 +38,16 @@
                     <a href="#">Forgot Password</a>
                 </div>
 
+                <div class="sign-up">
+                    <a href="Signup.html">Sign up</a>
+                </div>
             </form>
-
         </div>
-
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script src="../Js/supabaseClient.js"></script>
+    <script src="../Js/session.js"></script>
     <script src="../Js/loginpagescript.js"></script>
 </body>
 </html>
