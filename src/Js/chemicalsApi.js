@@ -18,5 +18,19 @@ window.getChemicals = async function () {
         throw error;
     }
 
+
     return data;
+};
+
+// Fetch chemicals from Supabase using RPC function get_chemicals
+async function fetchChemicals() {
+  const { data, error } = await supabase.rpc("get_chemicals");
+
+  if (error) {
+    console.error("RPC error:", error);
+    throw error;
+  }
+
+  console.log("chemicals:", data);
+  return data;
 };
