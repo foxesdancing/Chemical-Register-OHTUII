@@ -7,27 +7,34 @@
 </head>
 <body>
     <h1>Chem-reg</h1>
+
     <p id="welcomeText">Loading session...</p>
     <button id="logoutBtn">Log out</button>
+
+    <hr>
+
+    <h2>Chemical List</h2>
+    <p id="chemicalsStatus">Loading chemicals...</p>
+
+    <table id="chemicalsTable" border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Formula</th>
+                <th>Purpose</th>
+                <th>Supplier</th>
+                <th>Storage</th>
+            </tr>
+        </thead>
+        <tbody id="chemicalsBody">
+            <!-- JS inserts rows here -->
+        </tbody>
+    </table>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script src="src/Js/supabaseClient.js"></script>
     <script src="src/Js/session.js"></script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", async function () {
-            const session = await window.requireSession();
-
-            if (!session) return;
-
-            const user = session.user;
-            document.getElementById("welcomeText").textContent =
-                "Logged in as: " + user.email;
-
-            document.getElementById("logoutBtn").addEventListener("click", async function () {
-                await window.logoutUser();
-            });
-        });
-    </script>
+    <script src="src/Js/chemicalsApi.js"></script>
+    <script src="src/Js/mainPageScript.js"></script>
 </body>
 </html>
