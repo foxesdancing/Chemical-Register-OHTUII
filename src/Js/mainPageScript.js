@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <p>H-Phrases: ${chemical.h_phrases.join(", ")}</p>
                 <p>P-Phrases: ${chemical.p_phrases.join(", ")}</p>
                 <div class="pictograms"></div>
-                <a href="https://en.wikipedia.org/wiki/Sodium_chloride">View details</a>
+                <a href="${chemical.safety_data_sheet}">View details</a>
             `;
 
             // Create pictograms container, which loads all pictograms to the list (Jarre)
