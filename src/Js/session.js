@@ -1,5 +1,8 @@
 console.log("session.js is triggered");
 
+
+
+
 async function getCurrentSession() {
     const { data, error } = await window.supabase.auth.getSession();
 

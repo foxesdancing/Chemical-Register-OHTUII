@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chem-reg</title>
 </head>
+
 <body>
     <h1>Chem-reg</h1>
 
@@ -31,11 +32,22 @@
             <!-- JS inserts rows here -->
         </tbody>
     </table>
-
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script src="src/Js/supabaseClient.js"></script>
     <script src="src/Js/session.js"></script>
     <script src="src/Js/chemicalsApi.js"></script>
     <script src="src/Js/mainPageScript.js"></script>
+    <script type="module">
+
+        const { data } = await supabase.rpc("is_admin");
+
+        if (data === true) {
+            const btn = document.getElementById("logoutBtn");
+            const link = document.createElement("a");
+            link.href = "https://foxesdancing.github.io/Chemical-Register-OHTUII/chemicalForm.html";
+            link.textContent = "Add chemical to chemical register";
+            btn.insertAdjacentElement("afterend", link);
+        }
+    </script>
 </body>
 </html>
