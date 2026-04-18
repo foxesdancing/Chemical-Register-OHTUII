@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemical Submitting Form</title>
+</head>
+<body>
+    <h1>Submit a chemical</h1>
+    <form id="chemicalForm">
+
+        <div>
+            <label>Name</label>
+            <input type="text" id="name" required>
+        </div>
+
+        <div>
+          <label>Formula</label>
+          <input type="text" id="formula" required>  
+        </div>
+        
+        <div>
+           <label>Supplier</label>
+           <input type="text" id="supplier" required>
+        </div>
+
+
+        <div>
+           <label>Use purpose</label>
+           <input type="text" id="use_purpose" required>
+        </div>
+        
+        <div>
+          <label>Storage</label>
+          <input type="text" id="storage" required>  
+        </div>
+        
+        <div>
+            <label>H-phrases</label>
+            <select id="hPhrasesSelect" multiple size="6"></select>
+        </div>
+
+        <div id="selectedHphrases"></div>
+
+        <div>
+            <label>P-phrases</label>
+            <select id="pPhrasesSelect" multiple size="6"></select>
+        </div>
+
+        <div id="selectedPPhrases"></div>
+
+        <label>Pictograms</label>
+        <div id="pictogramCheckboxes"></div>
+
+        <div>
+          <label>If inhaled</label>
+          <input type="text" id="if_inhaled">  
+        </div>
+        
+        <div>
+         <label>If digested</label>
+         <input type="text" id="if_digested">   
+        </div>
+        
+        <div>
+          <label>If on skin</label>
+          <input type="text" id="if_onSkin">  
+        </div>
+        
+        <div>
+         <label>If on eyes</label>
+         <input type="text" id="if_onEyes">   
+        </div>
+        
+        <div>
+         <label>SDS PDF</label>
+         <input type="file" id="sdsFile" accept="application/pdf" required>   
+        </div>
+        
+        <button type="submit">Add chemical</button>
+</form>
+
+<p id="result"></p>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="src/Js/supabaseClient.js"></script>
+<script src="src/Js/session.js"></script>
+
+<script> // Script for adding chemicals
+
+// Load h-phrases into html
+async function loadHPhrases() {
+  const { data, error } = await supabase
+    .from("H_phrases")
+    .select("id, code, description")
+    .order("id");
+
+  if (error) {
+    console.error("Failed to load H-phrases:", error);
+    return;
+  }
+
+  const select = document.getElementById("hPhrasesSelect");
+
+  data.forEach(h => {
+    const option = document.createElement("option");
+    option.value = h.id;
+    option.textContent = `${h.code} — ${h.description}`;
+    select.appendChild(option);
+  });
+}
+loadHPhrases();
+
+// Collect selected H-phrases + add visible to user
+
+const hPhrasesSelectedIds = [];
+const selectedDiv = document.getElementById("selectedHphrases");
+const select = document.getElementById("hPhrasesSelect");
+
+select.addEventListener("dblclick", () => {
+  const opt = select.options[select.selectedIndex];
+  const id = Number(opt.value);
+  const text = opt.textContent;
+
+  // block dublicates
+  if (!hPhrasesSelectedIds.includes(id)) {
+    hPhrasesSelectedIds.push(id);
+    updateSelectedList();
+  }
+});
+
+function updateSelectedList() {
+  if (hPhrasesSelectedIds.length === 0) {
+    selectedDiv.innerHTML = "";
+    return;
+  }
+
+  let html = "<strong>Selected H-phrases:</strong><ul>";
+
+  hPhrasesSelectedIds.forEach(id => {
+    // hae optionin teksti id:n perusteella
+    const opt = [...select.options].find(o => Number(o.value) === id);
+    html += `<li>${opt.textContent}</li>`;
+  });
+
+  html += "</ul>";
+
+  selectedDiv.innerHTML = html;
+}
+
+
+// Load p-phrases into html
+async function loadPPhrases() {
+  const { data, error } = await supabase
+    .from("P_phrases")
+    .select("id, code, description")
+    .order("id");
+
+  if (error) {
+    console.error("Failed to load P-phrases:", error);
+    return;
+  }
+
+  const select = document.getElementById("pPhrasesSelect");
+
+  data.forEach(p => {
+    const option = document.createElement("option");
+    option.value = p.id;
+    option.textContent = `${p.code} — ${p.description}`;
+    select.appendChild(option);
+  });
+}
+
+loadPPhrases();
+
+
+// Collect selected P-phrases (id) + add visible to user 
+
+const selectedPIds = [];
+const pSelect = document.getElementById("pPhrasesSelect");
+const selectedPDiv = document.getElementById("selectedPPhrases");
+
+pSelect.addEventListener("dblclick", () => {
+  const opt = pSelect.options[pSelect.selectedIndex];
+  const id = Number(opt.value);
+
+  if (!selectedPIds.includes(id)) {
+    selectedPIds.push(id);
+    updateSelectedPList();
+  }
+});
+
+function updateSelectedPList() {
+  if (selectedPIds.length === 0) {
+    selectedPDiv.innerHTML = "";
+    return;
+  }
+
+  let html = "<strong>Selected P-phrases:</strong><ul>";
+
+  selectedPIds.forEach(id => {
+    const opt = [...pSelect.options].find(o => Number(o.value) === id);
+    html += `<li>${opt.textContent}</li>`;
+  });
+
+  html += "</ul>";
+
+  selectedPDiv.innerHTML = html;
+}
+
+// Load pictograms into html
+
+async function loadPictograms() {
+  const { data } = await supabase
+    .from("Hazard_pictograms")
+    .select("id, code, image_path")
+    .order("id");
+
+  const box = document.getElementById("pictogramCheckboxes");
+
+  data.forEach(p => {
+    box.innerHTML += `
+      <label style="display:flex;align-items:center;gap:6px;">
+        <input type="checkbox" class="pictogram" value="${p.id}">
+        <img src="${p.image_path}" alt="${p.code}" width="40" height="40">
+        ${p.code}
+      </label>
+    `;
+  });
+}
+
+loadPictograms();
+
+
+
+
+
+// Submit chemical into the chemicals table using form submit
+
+const form = document.getElementById("chemicalForm");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  // 1. Collect inputs
+  const name = document.getElementById("name").value;
+  const formula = document.getElementById("formula").value;
+  const supplier = document.getElementById("supplier").value;
+  const usePurpose = document.getElementById("use_purpose").value;
+  const ifInhaled = document.getElementById("if_inhaled").value;
+  const ifDigested = document.getElementById("if_digested").value;
+  const ifOnSkin = document.getElementById("if_onSkin").value;
+  const ifOnEyes = document.getElementById("if_onEyes").value;
+  const storage_information = document.getElementById("storage").value;
+  const file = document.getElementById("sdsFile").files[0];
+
+
+  // Pictograms
+const selectedPictogramIds = [...document.querySelectorAll('.pictogram:checked')]
+  .map(x => Number(x.value));
+
+ 
+
+  // 3. H- and P-phrases are already collected.
+  // hPhrasesSelectedIds
+  // selectedPIds
+
+  // 4. Load PDF to storage
+  const fileName = crypto.randomUUID() + ".pdf";
+
+  const { data: uploadData, error: uploadError } = await supabase
+    .storage
+    .from("Safety_data_sheets_pdf")
+    .upload(fileName, file);
+
+  if (uploadError) {
+    alert("PDF upload failed: " + uploadError.message);
+    return;
+  }
+
+  // 5. Get public url
+  const { data: urlData } = supabase
+    .storage
+    .from("Safety_data_sheets_pdf")
+    .getPublicUrl(uploadData.path);
+
+  const sdsUrl = urlData.publicUrl;
+
+  // 6. Add chemical to 
+  const { error: chemError } = await supabase
+    .from("chemicals")
+    .insert({
+      name: name,
+      chemical_formula: formula,
+      supplier: supplier,
+      use_purpose: usePurpose,
+      storage_information: storage_information,
+      if_inhaled: ifInhaled,
+      if_digested: ifDigested,
+      if_onSkin: ifOnSkin,
+      if_onEyes: ifOnEyes,
+      safety_datasheet: sdsUrl,
+      h_phrases: hPhrasesSelectedIds,
+      p_phrases: selectedPIds,
+      hazard_pictograms: selectedPictogramIds
+    });
+
+  if (chemError) {
+    alert("Chemical insert failed: " + chemError.message);
+    return;
+  }
+
+  alert("Chemical added successfully!");
+  form.reset();
+});
+
+
+
+</script>
+</body>
+</html>
