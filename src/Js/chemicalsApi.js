@@ -22,12 +22,12 @@ window.getChemicals = async function () {
     return data;
 };
 
-// Fetch chemicals from Supabase using RPC function get_chemicals
+// Fetch chemicals from Supabase using RPC function get_chemicals (Jarre)
 async function fetchChemicals() {
   const { data, error } = await supabase.rpc("get_chemicals");
 
   if (error) {
-    console.error("RPC error:", error);
+    console.error("RPC_get_chemicals error:", error);
     throw error;
   }
 

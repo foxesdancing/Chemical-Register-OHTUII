@@ -81,8 +81,13 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <p>P-Phrases: ${chemical.p_phrases.join(", ")}</p>
                 <div class="pictograms"></div>
                 <a href="${chemical.safety_data_sheet}">View details</a>
-            `;
+            `; 
+            
+            // "View details" will be filled with link .../Chemical-Register-OHTUII/chemical-card.html?id={chemical.id}, so chemical card page will fill dynamically using
+            // the correct chemicals information.
+            // Chemical card page will have its own fetch function using the url:s id to fetch correct chemicals information.
 
+            
             // Create pictograms container, which loads all pictograms to the list (Jarre)
             const pictogramContainer = listItem.querySelector(".pictograms");
 
