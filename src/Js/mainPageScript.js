@@ -1,18 +1,11 @@
 console.log("mainPageScript.js loaded");
 
 document.addEventListener("DOMContentLoaded", async function () {
-    const welcomeText = document.getElementById("welcomeText");
     const logoutBtn = document.getElementById("logoutBtn");
-    const chemicalsStatus = document.getElementById("chemicalsStatus");
-    const chemicalsBody = document.getElementById("chemicalsBody");
 
     // Require session
     const session = await window.requireSession();
     if (!session) return;
-
-    // Show logged in user
-    const user = session.user;
-    welcomeText.textContent = "Logged in as: " + user.email;
 
     // Logout
     logoutBtn.addEventListener("click", async function () {
@@ -20,68 +13,35 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
 
     // Load chemicals
-    await loadChemicals();
     await useFetchedChemicals(); // Loads chemicals as unordered list (Jarre)
-
-    async function loadChemicals() {
-        chemicalsStatus.textContent = "Loading chemicals...";
-        chemicalsBody.innerHTML = "";
-
-        try {
-            const chemicals = await window.getChemicals();
-
-            if (!chemicals || chemicals.length === 0) {
-                chemicalsStatus.textContent = "No chemicals found.";
-                return;
-            }
-
-            chemicalsStatus.textContent = "";
-            renderChemicals(chemicals);
-
-        } catch (error) {
-            console.error("Failed to load chemicals:", error);
-            chemicalsStatus.textContent = "Error loading chemicals.";
-        }
-    }
-
-    function renderChemicals(chemicals) {
-        chemicals.forEach(function (chemical) {
-            const row = document.createElement("tr");
-
-            row.innerHTML = `
-                <td>Name: ${chemical.name ?? ""}</td>
-                <td>Chemical formula: ${chemical.chemical_formula ?? ""}</td>
-                <td>Purpose of use: ${chemical.use_purpose ?? ""}</td>
-                <td> Supplier: ${chemical.supplier ?? ""}</td>
-                <td>Storage information: ${chemical.storage_information ?? ""}</td>
-            `;
-
-            chemicalsBody.appendChild(row);
-        });
-    }
 
     // Function to print chemical list into the mainpage (Jarre)
     async function useFetchedChemicals(){
-        // Create unordered list and append it into div (id = fetchedChemicals).
-        const list = document.createElement("ul");
-        document.getElementById("fetchedChemicals").appendChild(list);
+
+        // Lets declare the section element, where we will append the chemicals
+        const chemicalSection = document.getElementById("cardsContainer");
 
         // Array of the chemicals
         const chemicals = await fetchChemicals();
 
         // Append each 
         chemicals.forEach(chemical => {
-            const listItem = document.createElement("li");
+            const divItem = document.createElement("div");
+            divItem.className = "card";
 
-            listItem.innerHTML = `
-                <p>Name: ${chemical.name}</p>
+            divItem.innerHTML = `
+                <h3>Name: ${chemical.name}</h3>
                 <p>Formula: ${chemical.formula}</p>
+                <p class="date">Chemical added: ${chemical.created}</p>
+                <p>${chemical.h_phrases.join(". ")}</p>
+                <p>${chemical.p_phrases.join(". ")}</p>
                 <p>Storage: ${chemical.storage}</p>
-                <p>H-Phrases: ${chemical.h_phrases.join(", ")}</p>
-                <p>P-Phrases: ${chemical.p_phrases.join(", ")}</p>
                 <div class="pictograms"></div>
-                <a href="${chemical.safety_data_sheet}">View details</a>
+                <a href=${chemical.safety_data_sheet}>
+                    <button class="details-btn">View details</button>
+                </a>
             `; 
+            
             
             // "View details" will be filled with link .../Chemical-Register-OHTUII/chemical-card.html?id={chemical.id}, so chemical card page will fill dynamically using
             // the correct chemicals information.
@@ -89,7 +49,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             
             // Create pictograms container, which loads all pictograms to the list (Jarre)
-            const pictogramContainer = listItem.querySelector(".pictograms");
+            const pictogramContainer = divItem.querySelector(".pictograms");
 
             chemical.pictograms.forEach(path =>{
                 const img = document.createElement("img");
@@ -99,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 pictogramContainer.appendChild(img);
             })
 
-            list.appendChild(listItem);
+            chemicalSection.appendChild(divItem);
 
             console.log(chemical.name);
             console.log(chemical.formula);

@@ -54,6 +54,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             return;
         }
 
-        window.location.href = "mainPage.html";
+        window.location.href = "homepage.html";
     });
 });
