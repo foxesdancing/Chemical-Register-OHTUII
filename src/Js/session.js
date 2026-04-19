@@ -29,7 +29,7 @@ async function redirectIfLoggedIn() {
     const session = await getCurrentSession();
 
     if (session) {
-        window.location.href = "mainPage.html";
+        window.location.href = "homepage.html";
     }
 }
 
