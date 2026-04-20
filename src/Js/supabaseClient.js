@@ -1,4 +1,4 @@
-console.log("client is triggered");
+
 
 const client = supabase.createClient(
   "https://algzsbuadwzjrkylywqd.supabase.co",

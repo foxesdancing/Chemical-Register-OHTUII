@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chemical Submitting Form</title>
+    <link rel="stylesheet" href="src/css/chemicalForm.css">
 </head>
 <body>
-    <h1>Submit a chemical</h1>
+  <div class="form-container">
+    <div class="form-header">
+      <h1>Submit a chemical</h1>
+      <a href="homepage.html" class = back-button> Back to homepage</a>
+    </div>
+    
     <form id="chemicalForm">
 
         <div>
@@ -22,6 +28,11 @@
         <div>
            <label>Supplier</label>
            <input type="text" id="supplier" required>
+        </div>
+
+        <div>
+          <label>CAS-number</label>
+          <input type="text" id="casNumber" required> 
         </div>
 
 
@@ -73,14 +84,14 @@
         </div>
         
         <div>
-         <label>SDS PDF</label>
+         <label>Safety Data Sheet PDF</label>
          <input type="file" id="sdsFile" accept="application/pdf" required>   
         </div>
         
         <button type="submit">Add chemical</button>
 </form>
+</div>
 
-<p id="result"></p>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script src="src/Js/supabaseClient.js"></script>
@@ -245,6 +256,7 @@ form.addEventListener("submit", async (e) => {
   // 1. Collect inputs
   const name = document.getElementById("name").value;
   const formula = document.getElementById("formula").value;
+  const casnumber = document.getElementById("casNumber").value;
   const supplier = document.getElementById("supplier").value;
   const usePurpose = document.getElementById("use_purpose").value;
   const ifInhaled = document.getElementById("if_inhaled").value;
@@ -293,6 +305,7 @@ const selectedPictogramIds = [...document.querySelectorAll('.pictogram:checked')
       name: name,
       chemical_formula: formula,
       supplier: supplier,
+      CAS: casnumber,
       use_purpose: usePurpose,
       storage_information: storage_information,
       if_inhaled: ifInhaled,

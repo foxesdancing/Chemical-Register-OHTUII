@@ -1,4 +1,4 @@
-console.log("mainPageScript.js loaded");
+
 
 document.addEventListener("DOMContentLoaded", async function () {
     const logoutBtn = document.getElementById("logoutBtn");
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <p>${chemical.p_phrases.join(". ")}</p>
                 <p>Storage: ${chemical.storage}</p>
                 <div class="pictograms"></div>
-                <a href=${chemical.safety_data_sheet}>
+                <a href="chemicalcard.html?id=${chemical.id}">
                     <button class="details-btn">View details</button>
                 </a>
             `; 
@@ -60,9 +60,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             })
 
             chemicalSection.appendChild(divItem);
-
-            console.log(chemical.name);
-            console.log(chemical.formula);
         });
     }
 });

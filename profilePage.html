@@ -76,6 +76,19 @@
       font-size: 15px;
       color: #444444;
     }
+
+    #homepageBtn{
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 9px 24px;
+      border-radius: 7px;
+      cursor: pointer;
+      color: #29a8ab;
+      border: none;
+      transition: background 0.2s;
+    }
+
   </style>
 </head>
 <body>
@@ -93,14 +106,14 @@
       </svg>
     </div>
 
-    <p class="name">Matti Virtanen</p>
+    <p class="name" id="displayName"></p>
     <hr class="divider" />
 
     <div class="info-row">
       <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.05 1.2 2 2 0 012.03 0h3a2 2 0 012 1.72c.12.96.36 1.9.71 2.81a2 2 0 01-.45 2.11l-1.27 1.27a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.71A2 2 0 0122 14.92z"/>
       </svg>
-      <span class="info-text">+358 40 123 4567</span>
+      <span class="info-text" id="phonenumberField"></span>
     </div>
 
     <div class="info-row">
@@ -108,9 +121,33 @@
         <rect x="2" y="4" width="20" height="16" rx="2"/>
         <polyline points="2,4 12,13 22,4"/>
       </svg>
-      <span class="info-text">matti.virtanen@email.fi</span>
+      <span class="info-text" id="emailField"></span>
+    </div>
+    <div>
+      <a href="homepage.html">
+        <button id="homepageBtn"> Back to homepage</button>
+      </a>
     </div>
 
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="src/Js/supabaseClient.js"></script>
+    <script src="src/Js/session.js"></script>
+    <script  type="module">
+      const { data: sessionData } = await supabase.auth.getSession();
+      const userId = sessionData.session?.user?.id;
+      const { data: profile, error } = await supabase
+      .from("profiles")
+      .select("*")
+      .eq("id", userId)
+      .single();
+      // Display name
+      document.getElementById("displayName").textContent = profile.display_name;
+      // Phone number
+      document.getElementById("phonenumberField").textContent = profile.phone_number;
+      // Email
+      document.getElementById("emailField").textContent = profile.email;
+      
+    </script>
 </body>
 </html>

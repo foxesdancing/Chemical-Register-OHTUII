@@ -22,7 +22,8 @@
 
     <div class="nav-buttons" id="navButtons">
         <button class="logout-btn" id="logoutBtn">Log Out</button>
-        <button class="signup-btn">Profile</button>
+        <a href="profilePage.html">
+            <button class="profile-btn">Profile</button></a>
     </div>
 
 </header>
@@ -54,10 +55,10 @@
         if (data === true) {
             const div = document.getElementById("navButtons");
             const link = document.createElement("a");
-            link.href = "https://foxesdancing.github.io/Chemical-Register-OHTUII/chemicalForm.html";
+            link.href = "chemicalForm.html";
             
             const btn = document.createElement("button");
-            btn.className = "signup-btn";
+            btn.className = "profile-btn";
             btn.textContent = "Add a chemical";
             link.appendChild(btn);
             div.appendChild(link);

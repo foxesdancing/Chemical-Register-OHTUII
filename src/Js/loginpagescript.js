@@ -1,4 +1,4 @@
-console.log("loginpagescript.js is triggered");
+
 
 document.addEventListener("DOMContentLoaded", async function () {
     // If already logged in, skip login page

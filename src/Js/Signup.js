@@ -1,5 +1,5 @@
 // Wait until DOM loads
-console.log("Signup.js is triggered");
+
 document.addEventListener("DOMContentLoaded", function () {
 
     const form = document.querySelector("form");
@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const emailInput = document.querySelector('input[name="email"]');
     const passwordInput = document.querySelector('input[name="password"]');
     const confirmPasswordInput = document.querySelector('input[name="confirm-password"]');
+    const phoneInput = document.getElementById("phoneInput");
 
     form.addEventListener("submit", async function (event) {
         event.preventDefault(); // Stop form submission
@@ -48,10 +49,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const email = emailInput.value.trim();
             const password = passwordInput.value;
+            const displayName = nameInput.value;
+            const phoneNumber = phoneInput.value;
 
             const { data, error } = await supabase.auth.signUp({
-                email,
-                password
+                email: email,
+                password: password,
+                options: {
+                    data: {
+                        display_name: displayName,
+                        phone_number: phoneNumber
+                    }
+                }
             });
 
             if (error) {

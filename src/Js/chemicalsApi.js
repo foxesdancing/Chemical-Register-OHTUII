@@ -1,4 +1,4 @@
-console.log("chemicalsApi.js loaded");
+
 
 window.getChemicals = async function () {
     const { data, error } = await window.supabase
@@ -31,6 +31,5 @@ async function fetchChemicals() {
     throw error;
   }
 
-  console.log("chemicals:", data);
   return data;
 };
