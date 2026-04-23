@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
 
     // Load chemicals
-    await useFetchedChemicals();
+    await useFetchedChemicals(); // Loads chemicals as unordered list (Jarre)
 
     // Search event
     searchInput.addEventListener("input", function () {
@@ -64,15 +64,18 @@ searchInput.addEventListener("keydown", function (e) {
     }
 });
 
-    // Fetch function
+    // Function to print chemical list into the mainpage (Jarre)
     async function useFetchedChemicals(){
+        // Lets declare the section element, where we will append the chemicals
         const chemicalSection = document.getElementById("cardsContainer");
 
+        // Array of the chemicals
         const chemicals = await fetchChemicals();
 
         // Store for search
         allChemicals = chemicals;
 
+        // Append each 
         chemicals.forEach(chemical => {
             const divItem = document.createElement("div");
             divItem.className = "card";
@@ -90,6 +93,11 @@ searchInput.addEventListener("keydown", function (e) {
                 </a>
             `; 
 
+            // "View details" will be filled with link .../Chemical-Register-OHTUII/chemical-card.html?id={chemical.id}, so chemical card page will fill dynamically using
+            // the correct chemicals information.
+            // Chemical card page will have its own fetch function using the url:s id to fetch correct chemicals information.
+
+            // Create pictograms container, which loads all pictograms to the list (Jarre)
             const pictogramContainer = divItem.querySelector(".pictograms");
 
             chemical.pictograms.forEach(path =>{
