@@ -7,6 +7,25 @@ document.addEventListener("DOMContentLoaded", async function () {
     const loginForm = document.querySelector('.login-form'); 
     const emailInput = document.querySelector('input[type="email"]');
     const passwordInput = document.querySelector('input[type="password"]');
+    const forgotLink = document.getElementById("forgotPasswordLink");
+
+    forgotLink.addEventListener("click", async function (e) {
+        e.preventDefault();
+
+        const email = prompt("Enter your email for password reset:");
+
+        if (!email) return;
+
+        const { error } = await window.supabase.auth.resetPasswordForEmail(email, {
+            redirectTo: "https://foxesdancing.github.io/Chemical-Register-OHTUII/resetPassword.html"
+        });
+
+        if (error) {
+            alert("Error: " + error.message);
+            return;
+        }
+        alert("Password reset email sent. Check your inbox and spam folder.");
+    });
 
     function isValidEmail(email) {
         return /^\S+@\S+\.\S+$/.test(email);
